@@ -5,14 +5,13 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 
 import { Conta } from './conta.model';
 import { ContaService } from './conta.service';
-import { ITEMS_PER_PAGE, Principal } from '../../shared';
+import { ITEMS_PER_PAGE, Principal} from '../../shared';
 
 @Component({
     selector: 'jhi-conta',
     templateUrl: './conta.component.html'
 })
 export class ContaComponent implements OnInit, OnDestroy {
-
     contas: Conta[];
     currentAccount: any;
     eventSubscriber: Subscription;

@@ -4,12 +4,12 @@
         "conta" : {
             "home": {
                 "title": "Contas",
-                "createLabel": "Criar novo Conta",
+                "createLabel": "Criar nova Conta",
                 "createOrEditLabel": "Criar ou editar Conta"
             },
-            "created": "Um novo Conta foi criado com o identificador {{ param }}",
-            "updated": "Um Conta foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Conta foi deletado com o identificador {{ param }}",
+            "created": "Um novo Conta foi criada com o identificador {{ param }}",
+            "updated": "Um Conta foi atualizada com o identificador {{ param }}",
+            "deleted": "Um Conta foi deletada com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Conta {{ id }}?"
             },

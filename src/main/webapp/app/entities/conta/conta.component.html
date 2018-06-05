@@ -3,8 +3,8 @@
         <span jhiTranslate="esJhipsterApp.conta.home.title">Contas</span>
         <button class="btn btn-primary float-right jh-create-entity create-conta" [routerLink]="['/', { outlets: { popup: ['conta-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="esJhipsterApp.conta.home.createLabel">
-            Create new Conta
+            <span jhiTranslate="esJhipsterApp.conta.home.createLabel">
+                Create new Conta
             </span>
         </button>
     </h2>
@@ -15,53 +15,53 @@
     <div class="table-responsive" *ngIf="contas">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="conta"><span jhiTranslate="esJhipsterApp.conta.conta">Conta</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="valor"><span jhiTranslate="esJhipsterApp.conta.valor">Valor</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="diaVencimento"><span jhiTranslate="esJhipsterApp.conta.diaVencimento">Dia Vencimento</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="numParcelas"><span jhiTranslate="esJhipsterApp.conta.numParcelas">Num Parcelas</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="user.id"><span jhiTranslate="esJhipsterApp.conta.user">User</span> <span class="fa fa-sort"></span></th>
-            <th></th>
-            </tr>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+                    <th jhiSortBy="conta">
+                        <span jhiTranslate="esJhipsterApp.conta.conta">Conta</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th jhiSortBy="valor">
+                        <span jhiTranslate="esJhipsterApp.conta.valor">Valor</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th jhiSortBy="diaVencimento">
+                        <span jhiTranslate="esJhipsterApp.conta.diaVencimento">Dia Vencimento</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th jhiSortBy="numParcelas">
+                        <span jhiTranslate="esJhipsterApp.conta.numParcelas">Num Parcelas</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-            <tr *ngFor="let conta of contas ;trackBy: trackId">
-                <td><a [routerLink]="['../conta', conta.id ]">{{conta.id}}</a></td>
-                <td>{{conta.conta}}</td>
-                <td>{{conta.valor}}</td>
-                <td>{{conta.diaVencimento}}</td>
-                <td>{{conta.numParcelas}}</td>
-                <td>
-                    {{conta.user?.id}}
-                </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../conta', conta.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'conta/'+ conta.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'conta/'+ conta.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
+                <tr *ngFor="let conta of contas ;trackBy: trackId">
+                    <ng-container *ngIf="conta.user.id==currentAccount.id">
+                        <td>{{conta.conta}}</td>
+                        <td>{{conta.valor}}</td>
+                        <td>{{conta.diaVencimento}}</td>
+                        <td>{{conta.numParcelas}}</td>
+                        <td class="text-right">
+                            <div class="btn-group flex-btn-group-container">
+                                <button type="submit" [routerLink]="['../conta', conta.id ]" class="btn btn-info btn-sm">
+                                    <span class="fa fa-eye"></span>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </button>
+                                <button type="submit" [routerLink]="['/', { outlets: { popup: 'conta/'+ conta.id + '/edit'} }]" replaceUrl="true" queryParamsHandling="merge"
+                                    class="btn btn-primary btn-sm">
+                                    <span class="fa fa-pencil"></span>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </button>
+                                <button type="submit" [routerLink]="['/', { outlets: { popup: 'conta/'+ conta.id + '/delete'} }]" replaceUrl="true" queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                    <span class="fa fa-remove"></span>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+                </tr>
             </tbody>
         </table>
     </div>
