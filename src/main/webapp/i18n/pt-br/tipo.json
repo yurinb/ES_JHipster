@@ -1,0 +1,10 @@
+{
+    "esJhipsterApp": {
+        "Tipo" : {
+            "null": "",
+            "CONTINUA": "CONTINUA",
+            "NAO_CONTINUA": "NAO_CONTINUA",
+            "SPANISH": "SPANISH"
+        }
+    }
+}
